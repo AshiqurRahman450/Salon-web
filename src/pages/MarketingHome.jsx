@@ -75,15 +75,8 @@ const MarketingHome = () => {
               </Link>
             </div>
             
-            {/* Abstract Decorative Elements */}
-            <div className="mt-20 relative max-w-4xl mx-auto animate-scale-in" style={{ animationDelay: '0.6s' }}>
-              <div className="w-full h-48 md:h-64 bg-gradient-to-t from-[#F8F9FA] via-transparent to-transparent absolute bottom-0 z-10"></div>
-              <div className="grid grid-cols-3 gap-6 animate-float opacity-80">
-                 <div className="h-40 md:h-64 bg-white rounded-3xl shadow-2xl shadow-slate-200/50 border border-slate-100 transform -rotate-6 mt-10"></div>
-                 <div className="h-48 md:h-72 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-3xl shadow-2xl shadow-primary/20 border border-white z-0"></div>
-                 <div className="h-40 md:h-64 bg-white rounded-3xl shadow-2xl shadow-slate-200/50 border border-slate-100 transform rotate-6 mt-10"></div>
-              </div>
-            </div>
+            {/* Abstract Decorative Elements Removed */}
+
 
           </div>
         </div>
