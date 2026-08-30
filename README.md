@@ -1,6 +1,6 @@
-# Aura Salon - Web Frontend
+# Aura Salon - Web & Mobile Frontend
 
-This is the web frontend for the Aura Salon management application. It provides dashboards for Super Admins and Salon Owners.
+This repository contains both the web frontend (React + Vite) and the mobile application (React Native + Expo) for the Aura Salon management application. It provides dashboards for Super Admins and Salon Owners on the web, and a customer booking interface on the mobile app.
 
 ## Setup Instructions
 
@@ -13,11 +13,30 @@ This is the web frontend for the Aura Salon management application. It provides 
 2. **Environment Variables**
    Currently, the application relies on hardcoded API URLs or falls back to a hosted backend. If you need to point this to your local backend, you can update the API URLs in the respective components (or add a `.env` file and configure Vite proxy/env variables).
 
-3. **Run the Development Server**
+3. **Run the Web Development Server**
    ```bash
    npm run dev
    ```
    The application will be available at `http://localhost:5173` (or another port specified by Vite).
+
+## Mobile App Setup Instructions
+
+1. **Install Dependencies**
+   Navigate to the `mobile2` folder and run:
+   ```bash
+   npm install
+   ```
+
+2. **Run the Expo Development Server**
+   ```bash
+   npm start
+   ```
+   - This will start the Metro bundler.
+   - You can scan the QR code using the **Expo Go** app on your physical iOS or Android device.
+   - Alternatively, press `a` to run on an Android emulator, or `i` to run on an iOS simulator.
+
+3. **Backend Connection**
+   The mobile app communicates with the same backend. By default, it connects to a hosted backend on Render. If running the backend locally, you may need to update the `API_URL` to your machine's local IP address (e.g., `192.168.1.5:5000`) within the screens.
 
 ## Demo Credentials
 
