@@ -1,16 +1,81 @@
-# React + Vite
+# Aura Salon - Web Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+This is the web frontend for the Aura Salon management application. It provides dashboards for Super Admins and Salon Owners.
 
-Currently, two official plugins are available:
+## Setup Instructions
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. **Install Dependencies**
+   Navigate to the `web` folder and run:
+   ```bash
+   npm install
+   ```
 
-## React Compiler
+2. **Environment Variables**
+   Currently, the application relies on hardcoded API URLs or falls back to a hosted backend. If you need to point this to your local backend, you can update the API URLs in the respective components (or add a `.env` file and configure Vite proxy/env variables).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+3. **Run the Development Server**
+   ```bash
+   npm run dev
+   ```
+   The application will be available at `http://localhost:5173` (or another port specified by Vite).
 
-## Expanding the Oxlint configuration
+## Demo Credentials
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+You can use the following demo credentials to log in and explore the application.
+
+- **Super Admin**
+  - Email: `admin@aura.com`
+  - Password: `admin123`
+
+- **Salon Owner** (Sample)
+  - Email: `owner0@aura.com` (or `owner1@aura.com` ... up to `owner9@aura.com`)
+  - Password: `password123`
+
+- **Customer** (for mobile app testing)
+  - You can register a new customer via the mobile app, or seed the database and use any randomly generated customer email with the password `password123`.
+
+## Key Technical Decisions
+
+- **React & Vite**: Chosen for fast development, hot module replacement, and modern build tooling.
+- **Tailwind CSS**: Used for rapid UI styling, ensuring a consistent and responsive design system without maintaining complex custom CSS files.
+- **Oxlint**: Integrated for fast and strict linting to maintain code quality.
+- **RESTful API Integration**: Uses standard `fetch` or `axios` to communicate with the Node.js/Express backend.
+- **Role-Based Dashboards**: The web app is structured to provide different views based on the authenticated user's role (`admin` vs `salon_owner`).
+
+## API Documentation Overview
+
+The application communicates with a Node.js backend. Here are the key API routes used:
+
+### Auth (`/api/auth`)
+- `POST /api/auth/register` - Register a new user
+- `POST /api/auth/login` - Authenticate a user and receive a JWT
+- `GET /api/auth/me` - Get current authenticated user details
+
+### Salons (`/api/salons`)
+- `GET /api/salons` - Get a list of all salons
+- `GET /api/salons/:id` - Get details for a specific salon
+- `POST /api/salons` - Create a new salon (Owner)
+- `GET /api/salons/:salonId/services` - Get services for a specific salon
+- `GET /api/salons/:salonId/staff` - Get staff for a specific salon
+
+### Services (`/api/services`)
+- `GET /api/services` - Get all services
+- `POST /api/services` - Create a service (Owner)
+- `GET /api/services/:id` - Get a specific service by ID
+
+### Staff (`/api/staff`)
+- `GET /api/staff` - Get all staff
+- `GET /api/staff/:id` - Get a specific staff member
+
+### Appointments (`/api/appointments`)
+- `GET /api/appointments` - Get appointments for the authenticated user
+- `POST /api/appointments` - Create a new appointment
+- `PUT /api/appointments/:id/status` - Update appointment status (Owner)
+- `PUT /api/appointments/:id/cancel` - Cancel an appointment
+
+### Admin (`/api/admin`)
+- `GET /api/admin/stats` - Get platform statistics
+- `GET /api/admin/users` - Get all users
+- `GET /api/admin/services` - Get all services across platform
+- `GET /api/admin/staff` - Get all staff across platform
+- `GET /api/admin/reviews` - Get all reviews
